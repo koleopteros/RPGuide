@@ -4,8 +4,10 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import ja.project.comp3074.rpguide.obj.ListInterface;
+
 @Entity
-public class User {
+public class User implements ListInterface{
     @PrimaryKey
     private long id;
     private String firstName;
@@ -46,5 +48,15 @@ public class User {
 
     public String getPasswd() {
         return passwd;
+    }
+
+    @Override
+    public String getName() {
+        return firstName+" "+lastName;
+    }
+
+    @Override
+    public String getSubDetail() {
+        return "";
     }
 }

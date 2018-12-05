@@ -8,6 +8,7 @@ import android.arch.persistence.room.Query;
 
 import java.util.List;
 
+import ja.project.comp3074.rpguide.obj.ListInterface;
 import ja.project.comp3074.rpguide.obj.users.User;
 
 @Dao
@@ -16,7 +17,7 @@ public interface UserDao {
     void insert(User user);
 
     @Query("select * from User")
-    LiveData<List<User>> getAllUsers();
+    LiveData<List<ListInterface>> getAllUsers();
 
     @Query("select * from User where id = :id")
     User getUser(long id);

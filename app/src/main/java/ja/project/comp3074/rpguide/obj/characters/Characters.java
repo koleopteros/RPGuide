@@ -4,50 +4,64 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import ja.project.comp3074.rpguide.obj.ListInterface;
+
 @Entity(tableName="characters")
-public class Characters {
+public class Characters implements ListInterface {
     @PrimaryKey
     private long id;
-
+    @NonNull
     private long userID;
     @NonNull
     private String name;
+    private String race;
+    private String job;
+    private int level;
     private int str;
     private int dex;
     private int intel;
     private int wis;
     private int cha;
-    private int luk;
+    private int con;
+    private String desc;
 
     private double rating;
     private int ratingCount;
 
-    public Characters(long id, long userID, String name){
+    public Characters(long id, @NonNull long userID, @NonNull String name, String race, String job, int level, int str, int dex, int intel, int wis, int cha, int con, String desc) {
         this.id = id;
+        this.userID = userID;
         this.name = name;
-        this.userID = userID;
-        str = 0;
-        dex = 0;
-        intel = 0;
-        wis = 0;
-        cha = 0;
-        luk = 0;
-        rating = 0;
-        ratingCount =0;
+        this.race = race;
+        this.job = job;
+        this.level = level;
+        this.str = str;
+        this.dex = dex;
+        this.intel = intel;
+        this.wis = wis;
+        this.cha = cha;
+        this.con = con;
+        rating =0;
+        ratingCount=0;
+        this.desc = desc;
     }
-
-    public Characters(long id, long userID, @NonNull String name, int str, int dex, int intel, int wis, int cha, int luk) {
-        this.id = id;
+    //Constructor for non-DB source
+    public Characters(@NonNull long userID, @NonNull String name, String race, String job, int str, int dex, int intel, int wis, int cha, int con, String desc) {
+        this.id = -1;
         this.userID = userID;
+        this.race = race;
+        this.job = job;
+        this.level = 1;
         this.name = name;
         this.str = str;
         this.dex = dex;
         this.intel = intel;
         this.wis = wis;
         this.cha = cha;
-        this.luk = luk;
+        this.con = con;
         rating =0;
         ratingCount=0;
+        this.desc = desc;
     }
 
     public long getId() {
@@ -56,6 +70,11 @@ public class Characters {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String getSubDetail() {
+        return "Level : "+level+" "+race+" "+job;
     }
 
     public int getStr() {
@@ -93,11 +112,11 @@ public class Characters {
         this.cha = cha;
     }
 
-    public int getLuk() {
-        return luk;
+    public int getCon() {
+        return con;
     }
-    public void setLuk(int luk) {
-        this.luk = luk;
+    public void setCon(int con) {
+        this.con = con;
     }
 
     public double getRating(){
@@ -123,7 +142,7 @@ public class Characters {
             case 4:
                 return ++cha;
             case 5:
-                return ++luk;
+                return ++con;
             default:
                 return -1;
         }
@@ -146,8 +165,8 @@ public class Characters {
                 cha = cha+value;
                 return cha;
             case 5:
-                luk = luk+value;
-                return luk;
+                con = con +value;
+                return con;
             default:
                 return -1;
         }
@@ -165,7 +184,7 @@ public class Characters {
             case 4:
                 return (int)((cha-10)/2);
             case 5:
-                return (int)((luk-10)/2);
+                return (int)((con -10)/2);
             default:
                 return -1;
         }
