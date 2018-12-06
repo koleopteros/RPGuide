@@ -14,7 +14,7 @@ import ja.project.comp3074.rpguide.obj.shops.Shops;
 @Dao
 public interface ShopDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertShop();
+    void insertShop(Shops shop);
 
     @Query("select * from shops where id = :id")
     Shops getShop(long id);

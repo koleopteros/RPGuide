@@ -13,7 +13,7 @@ import ja.project.comp3074.rpguide.obj.characters.Characters;
 
 @Database(entities=(Characters.class), version =1)
 public abstract class CharacterDatabase extends RoomDatabase{
-    public abstract CharacterDao cDao();
+    public abstract CharacterDao characterDao();
     private static volatile CharacterDatabase instance;
 
     static CharacterDatabase getDatabase(final Context context){
@@ -30,7 +30,7 @@ public abstract class CharacterDatabase extends RoomDatabase{
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
-            new populateAsyncTask(instance.cDao()).execute();
+            new populateAsyncTask(instance.characterDao()).execute();
         }
     };
 

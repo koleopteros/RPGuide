@@ -15,7 +15,7 @@ public class CharacterRepository {
 
     CharacterRepository(Application app){
         CharacterDatabase db = CharacterDatabase.getDatabase(app);
-        cDao = db.cDao();
+        cDao = db.characterDao();
         allCharacters = cDao.getAllCharacters();
     }
 

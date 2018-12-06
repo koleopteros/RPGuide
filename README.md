@@ -18,12 +18,12 @@ Users create Characters, and each Character can only have one User.
 
 Characters will only have basic information (attributes)
 
-Stores will have the store's details (name, address, open/close times, phone number, email)
+Stores will have the store's details (name, street, open/close times, phone number, email)
 
 # GPS requirement
 App will have to use GPS permissions to get current location
 Use the usual map uri for full map view.
-Use "google.navigation:q=address+city" for navigation
+Use "google.navigation:q=street+city" for navigation
 
 # Search requirement
 Might take time to get it to work?  Heard bad stories about it.
