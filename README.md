@@ -56,3 +56,5 @@ Haven't decided how lazy I want to be.
 my god, I think I spend at least 5 times as long planning how lazy I want to be than the amount of time I spend doing the actual work... 
 
 ughhhh i should really start the angular project.  AHhhhhhhhhhhhhh screw it.  I give up on life.  Its too much work.  I should probably just stop fighting off the suicidal urge.
+
+Protip: Koleopteros and Slidyklops are the same person.  I just use two different accounts to feel less lonely.
