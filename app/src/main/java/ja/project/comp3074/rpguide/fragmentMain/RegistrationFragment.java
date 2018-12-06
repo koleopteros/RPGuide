@@ -1,4 +1,4 @@
-package ja.project.comp3074.rpguide.fragments;
+package ja.project.comp3074.rpguide.fragmentMain;
 
 import android.content.Context;
 import android.net.Uri;

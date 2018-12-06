@@ -6,7 +6,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/general-kenobi" />
+            android:src="@drawable/general_kenobi" />
 
     </item>
 
