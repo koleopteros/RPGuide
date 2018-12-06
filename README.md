@@ -8,6 +8,8 @@ Users can search up other user's characters based on "Character Name" and "User 
 
 Users can also query up a list of stores that have playspaces (we'll use a fixed list for now).  When they select the list of stores, it'll open up a dialog and ask for either see it on map or get navigation.  (Ultra simple, explained in GPS Requirement section)
 
+# About Page
+Will only contain the peoples who hases contributes to this project.  I need to make another side account to make this look more crowded... :/
 For the About page, I'll just setup an object called members and have the list spit out our names into a list view or something. E z p z
 If we need pictures, we can just use General Reposti.
 
