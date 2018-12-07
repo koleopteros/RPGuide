@@ -1,5 +1,5 @@
 # RPGuide
-Guide to build a role playing character for a general Role playing game
+Helps people with managing a role playing character for a general Role playing game.  Not much to manage as for now, we can only create a character.
 
 App loads up Splash Activity which will then load Main Activity.  Splash should only show momentarily.  We could potentially induce a delay, but I dont care about that.
 
