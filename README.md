@@ -52,8 +52,17 @@ Users can create many Characters, and each Character can only have one User.
 Characters will only have basic information (attributes, race, level and some sort of rating)
 Stores will have the store's details (name, street, open/close times, phone number, email, tags)
  - tags will be using TypeConverter so we don't flood our constructor with loads of crap.
- - currently has a semi-useless comment column.  Could be useful?
+ - currently has a semi-useless comment column.  Considering to use it as a descrip
  - Almost considered using binary as a method of calculating our tag/flags.  It'll seem arbitrary, and we'd have to use some sort of guide to keep track of which bit would represent which flag.  Might be worth considering incase TypeConverter isn't as easy to implement as I hoped.
+## Interface: ListInterface
+ListInterface is implemented to all three entities to make our lives easier when pushing out data to the recyclerView.
+Has basic functions with relatively obvious purposes.
+The only method to note is ** getObjType() ** as it returns a hard-coded value
+ - User type returns 0
+ - Character type returns !
+ - Shop type returns 2
+ 
+The purpose of this is so that we can identify what type of data is currently stored within LiveData<List<ListInterface>>
 
 # GPS requirement
 App will have to use GPS permissions to get current location
