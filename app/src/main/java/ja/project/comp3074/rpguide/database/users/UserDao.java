@@ -17,12 +17,11 @@ public interface UserDao {
     void insert(User user);
 
     @Query("select * from User")
-    LiveData<List<ListInterface>> getAllUsers();
+    List<User> getAllUsers();
 
-    @Query("select * from User where id = :id")
-    User getUser(long id);
+    @Query("select * from User")
+    LiveData<List<User>> getLiveUsers();
 
-    @Query("delete * from User where id = :id")
+    @Query("delete from User where id = :id")
     void deleteUser(long id);
-
 }

@@ -28,7 +28,7 @@ public abstract class UserDatabase extends RoomDatabase{
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
-            new populateAsyncTask(instance.uDao()).execute();
+            new populateAsyncTask(instance.userDao()).execute();
         }
     };
     private static class populateAsyncTask extends AsyncTask<Void,Void,Void>{

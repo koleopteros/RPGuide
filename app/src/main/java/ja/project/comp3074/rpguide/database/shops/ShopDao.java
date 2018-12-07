@@ -16,12 +16,6 @@ public interface ShopDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertShop(Shops shop);
 
-    @Query("select * from shops where id = :id")
-    Shops getShop(long id);
-
-    @Query("select * from shops where name like :name")
-    List<ListInterface> getShopsLike(String name);
-
     @Query("select * from shops")
-    LiveData<List<ListInterface>> getAllShops();
+    LiveData<List<Shops>> getAllShops();
 }

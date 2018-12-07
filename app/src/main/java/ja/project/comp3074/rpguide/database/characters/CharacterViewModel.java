@@ -12,7 +12,7 @@ import ja.project.comp3074.rpguide.obj.characters.Characters;
 
 public class CharacterViewModel extends AndroidViewModel {
     private CharacterRepository cRepo;
-    private LiveData<List<ListInterface>> allCharacters;
+    private LiveData<List<Characters>> allCharacters;
 
     public CharacterViewModel(@NonNull Application application) {
         super(application);
@@ -20,7 +20,7 @@ public class CharacterViewModel extends AndroidViewModel {
         allCharacters = cRepo.getAllCharacters();
     }
 
-    public LiveData<List<ListInterface>> getAllCharacters(){
+    public LiveData<List<Characters>> getAllCharacters(){
         return allCharacters;
     }
 

@@ -11,7 +11,8 @@ import ja.project.comp3074.rpguide.obj.characters.Characters;
 
 public class CharacterRepository {
     private CharacterDao cDao;
-    private LiveData<List<ListInterface>> allCharacters;
+    private LiveData<List<Characters>> allCharacters;
+    private LiveData<List<Characters>> selectedCharacters;
 
     CharacterRepository(Application app){
         CharacterDatabase db = CharacterDatabase.getDatabase(app);
@@ -19,7 +20,7 @@ public class CharacterRepository {
         allCharacters = cDao.getAllCharacters();
     }
 
-    public LiveData<List<ListInterface>> getAllCharacters(){
+    public LiveData<List<Characters>> getAllCharacters(){
         return allCharacters;
     }
 

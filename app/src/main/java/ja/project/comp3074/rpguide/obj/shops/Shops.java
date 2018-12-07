@@ -91,4 +91,9 @@ public class Shops implements ListInterface{
     public String getSubDetail() {
         return street+", "+city+", "+province+" "+postalCode;
     }
+
+    @Override
+    public int getObjType() {
+        return 2;
+    }
 }

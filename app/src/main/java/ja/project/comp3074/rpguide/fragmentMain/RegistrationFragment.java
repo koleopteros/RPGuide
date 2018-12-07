@@ -1,80 +1,74 @@
 package ja.project.comp3074.rpguide.fragmentMain;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.util.List;
+
+import ja.project.comp3074.rpguide.DashboardActivity;
 import ja.project.comp3074.rpguide.R;
+import ja.project.comp3074.rpguide.database.users.UserViewModel;
+import ja.project.comp3074.rpguide.obj.users.User;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link RegistrationFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link RegistrationFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class RegistrationFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    TextView reg_fname,reg_lname,reg_email,reg_passwd;
+    Button back, register;
+    private UserViewModel uvm;
     private OnFragmentInteractionListener mListener;
 
     public RegistrationFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RegistrationFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RegistrationFragment newInstance(String param1, String param2) {
-        RegistrationFragment fragment = new RegistrationFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_registration, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_registration, container,false);
+        reg_fname = (TextView) view.findViewById(R.id.txtRegFirstName);
+        reg_lname = (TextView) view.findViewById(R.id.txtRegLastName);
+        reg_email = (TextView) view.findViewById(R.id.txtRegEmail);
+        reg_passwd = (TextView) view.findViewById(R.id.txtRegPasswd);
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+        back = (Button) view.findViewById(R.id.btnBackToLogin);
+        register = (Button) view.findViewById(R.id.btnRegister);
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardActivity.fragman.beginTransaction().replace(R.id.dashFrame,new LoginFragment(),null).commit();
+            }
+        });
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                completeRegistration();
+                Toast.makeText(getActivity(),"Registration complete!",Toast.LENGTH_SHORT).show();
+            }
+        });
+        return view;
+    }
+    private void completeRegistration(){
+        User newUser = new User(
+                reg_fname.getText().toString(),
+                reg_lname.getText().toString(),
+                reg_email.getText().toString(),
+                reg_passwd.getText().toString());
+        uvm = ViewModelProviders.of(this).get(UserViewModel.class);
+        uvm.insert(newUser);
+    }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

@@ -12,14 +12,20 @@ import ja.project.comp3074.rpguide.obj.users.User;
 
 public class UserViewModel extends AndroidViewModel{
     private UserRepository userRepo;
-    private LiveData<List<ListInterface>> allUsers;
-
+    private List<User> allUsers;
+    private LiveData<List<User>> allLiveUsers;
     public UserViewModel(@NonNull Application app){
         super(app);
         userRepo = new UserRepository(app);
         allUsers = userRepo.getAllUsers();
+        allLiveUsers = userRepo.getLiveUsers();
     }
-    public LiveData<List<ListInterface>> getAllUsers(){
+
+    public LiveData<List<User>> getAllLiveUsers() {
+        return allLiveUsers;
+    }
+
+    public List<User> getAllUsers(){
         return allUsers;
     }
     public void insert(User user){

@@ -16,14 +16,9 @@ public interface CharacterDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCharacter(Characters character);
 
-    @Query("select * from Characters where id = :id")
-    Characters getCharacter(int id);
-
     @Query("Select * from Characters")
-    LiveData<List<ListInterface>> getAllCharacters();
+    LiveData<List<Characters>> getAllCharacters();
 
-    @Query("select * from Characters where name like :name")
-    LiveData<List<ListInterface>> getCharactersLike(String name);
 
     @Query("delete from Characters where id = :id")
     void deleteCharacter(int id);

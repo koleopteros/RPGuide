@@ -59,4 +59,9 @@ public class User implements ListInterface{
     public String getSubDetail() {
         return "";
     }
+
+    @Override
+    public int getObjType() {
+        return 0;
+    }
 }

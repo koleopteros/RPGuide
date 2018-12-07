@@ -5,19 +5,17 @@ import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
 import java.util.List;
-
-import ja.project.comp3074.rpguide.obj.ListInterface;
 import ja.project.comp3074.rpguide.obj.shops.Shops;
 
 public class ShopRepository {
     private ShopDao sDao;
-    private LiveData<List<ListInterface>> allShops;
+    private LiveData<List<Shops>> allShops;
     ShopRepository(Application app){
         ShopDatabase db = ShopDatabase.getDatabase(app);
         sDao = db.shopDao();
         allShops = sDao.getAllShops();
     }
-    public LiveData<List<ListInterface>> getAllShops(){
+    public LiveData<List<Shops>> getAllShops(){
         return allShops;
     }
     public void insert(Shops shop){

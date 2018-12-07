@@ -77,6 +77,11 @@ public class Characters implements ListInterface {
         return "Level : "+level+" "+race+" "+job;
     }
 
+    @Override
+    public int getObjType() {
+        return 1;
+    }
+
     public int getStr() {
         return str;
     }

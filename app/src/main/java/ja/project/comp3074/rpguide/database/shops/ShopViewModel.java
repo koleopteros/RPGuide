@@ -12,7 +12,7 @@ import ja.project.comp3074.rpguide.obj.shops.Shops;
 
 public class ShopViewModel extends AndroidViewModel{
     private ShopRepository shopRepo;
-    private LiveData<List<ListInterface>> allShops;
+    private LiveData<List<Shops>> allShops;
 
     public ShopViewModel(@NonNull Application application) {
         super(application);
@@ -20,7 +20,7 @@ public class ShopViewModel extends AndroidViewModel{
         allShops = shopRepo.getAllShops();
     }
 
-    public LiveData<List<ListInterface>> getAllShops() {
+    public LiveData<List<Shops>> getAllShops() {
         return allShops;
     }
     public void insert(Shops shop){

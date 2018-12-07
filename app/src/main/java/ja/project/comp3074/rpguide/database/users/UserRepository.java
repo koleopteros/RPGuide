@@ -11,14 +11,17 @@ import ja.project.comp3074.rpguide.obj.users.User;
 
 public class UserRepository {
     private UserDao uDao;
-    private LiveData<List<ListInterface>> allUsers;
+    private List<User> allUsers;
+    private LiveData<List<User>> allLiveUsers;
 
     UserRepository(Application app){
         UserDatabase db = UserDatabase.getDatabase(app);
         uDao = db.userDao();
         allUsers=uDao.getAllUsers();
+        allLiveUsers = uDao.getLiveUsers();
     }
-    public LiveData<List<ListInterface>>getAllUsers(){
+    public LiveData<List<User>>getLiveUsers(){return allLiveUsers;}
+    public List<User>getAllUsers(){
         return allUsers;
     }
     public void insert(User user){
