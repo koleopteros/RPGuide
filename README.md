@@ -9,8 +9,10 @@ DashboardActivity holds AddNewCharacter, About, Shop, and Dash(the default page)
 
 ### AboutFragment
 Will only contain the peoples who hases contributes to this project.  I need to make another side account to make this look more crowded... :/
-For the About page, I'll just setup an object called members and have the list spit out our names into a list view or something. E z p z
-If we need pictures, we can just use General Reposti.
+For the About page, I'll just setup a String object called members and have the list spit out our names into a list view or something. E z p z.
+
+Make sure to add yourself to the members array found within the AboutFragment.
+
 
 ### ShopFragment
 Will list shops.  Can use ListInterface.getObjType to identify the list that will be displayed in the recyclerView.
