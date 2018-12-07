@@ -74,3 +74,7 @@ Tried to do it without using artificial timers, hence the shortness.  I suppose 
 ## Regarding selection of row items
 Clicking a row will open a dialog box that will contain details.
 Haven't decided how lazy I want to be.
+
+# Additional ideas
+Implement CardView for the RecyclerView, and have them as collapse-able or expandable.
+  Stack Overflow Ref: https://stackoverflow.com/questions/27203817/recyclerview-expand-collapse-items/38623873#38623873
