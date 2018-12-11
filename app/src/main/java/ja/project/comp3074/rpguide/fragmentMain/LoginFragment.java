@@ -78,6 +78,8 @@ public class LoginFragment extends Fragment {
                 SharedPreferences prefs = getActivity().getSharedPreferences("mrUser", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putString("name", foundUser.getFirstName());
+                editor.putLong("userID", foundUser.getId());
+
                 editor.apply();
                 break;
             }

@@ -28,7 +28,7 @@ public class Characters implements ListInterface {
     private double rating;
     private int ratingCount;
 
-    public Characters(long id, @NonNull long userID, @NonNull String name, String race, String job, int level, int str, int dex, int intel, int wis, int cha, int con, String desc) {
+    public Characters(long id, @NonNull long userID, @NonNull String name, String race, String job, int level, int str, int dex, int con, int intel, int wis, int cha, String desc) {
         this.id = id;
         this.userID = userID;
         this.name = name;
@@ -46,7 +46,7 @@ public class Characters implements ListInterface {
         this.desc = desc;
     }
     //Constructor for non-DB source
-    public Characters(@NonNull long userID, @NonNull String name, String race, String job, int str, int dex, int intel, int wis, int cha, int con, String desc) {
+    public Characters(@NonNull long userID, @NonNull String name, String race, String job, int str, int dex, int con, int intel, int wis, int cha, String desc) {
         this.id = -1;
         this.userID = userID;
         this.race = race;
@@ -63,7 +63,23 @@ public class Characters implements ListInterface {
         ratingCount=0;
         this.desc = desc;
     }
-
+    public Characters(@NonNull long userID, @NonNull String name, String race, String job,int level, int str, int dex, int con, int intel, int wis, int cha, String desc) {
+        this.id = -1;
+        this.userID = userID;
+        this.race = race;
+        this.job = job;
+        this.level = level;
+        this.name = name;
+        this.str = str;
+        this.dex = dex;
+        this.intel = intel;
+        this.wis = wis;
+        this.cha = cha;
+        this.con = con;
+        rating =0;
+        ratingCount=0;
+        this.desc = desc;
+    }
     public long getId() {
         return id;
     }
