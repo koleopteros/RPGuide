@@ -1,18 +1,18 @@
 package ja.project.comp3074.rpguide.obj.users;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import ja.project.comp3074.rpguide.obj.ListInterface;
 
-@Entity
 public class User implements ListInterface{
-    @PrimaryKey
+
     private long id;
     private String firstName;
     private String lastName;
-    @NonNull
+
     private String email;
     private String passwd;
 
@@ -50,16 +50,38 @@ public class User implements ListInterface{
         return passwd;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setEmail(@NonNull String email) {
+        this.email = email;
+    }
+
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
+    }
+
+    @Ignore
     @Override
     public String getName() {
         return firstName+" "+lastName;
     }
 
+    @Ignore
     @Override
     public String getSubDetail() {
         return "";
     }
-
+    @Ignore
     @Override
     public int getObjType() {
         return 0;

@@ -16,7 +16,7 @@ import java.util.Set;
 import ja.project.comp3074.rpguide.database.helper.Converter;
 import ja.project.comp3074.rpguide.obj.shops.Shops;
 
-@Database(entities = (Shops.class), version=1)
+@Database(entities = Shops.class, version=1)
 @TypeConverters({Converter.class})
 public abstract class ShopDatabase extends RoomDatabase{
     public abstract ShopDao shopDao();

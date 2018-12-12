@@ -11,59 +11,19 @@ import android.view.ViewGroup;
 import ja.project.comp3074.rpguide.R;
 
 public class ShopsFragment extends Fragment {
-    private OnFragmentInteractionListener mListener;
-
     public ShopsFragment() {
         // Required empty public constructor
     }
-    // TODO: Rename and change types and number of parameters
     public static ShopsFragment newInstance(String param1, String param2) {
         ShopsFragment fragment = new ShopsFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
     }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_shops, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 }

@@ -1,6 +1,7 @@
 package ja.project.comp3074.rpguide.obj.shops;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.Set;
@@ -33,7 +34,7 @@ public class Shops implements ListInterface{
         this.comment = comment;
         this.tags = tags;
     }
-
+    @Ignore
     public Shops(String name, String street, String city, String province, String postalCode, String phoneNumber, String email, String comment, Set<String> tags) {
         this.name = name;
         this.street = street;
@@ -48,6 +49,11 @@ public class Shops implements ListInterface{
 
     public long getId() {
         return id;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     public String getStreet() {
@@ -82,16 +88,52 @@ public class Shops implements ListInterface{
         return tags;
     }
 
-    @Override
-    public String getName() {
-        return name;
+    public void setId(long id) {
+        this.id = id;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public void setTags(Set<String> tags) {
+        this.tags = tags;
+    }
+
+    @Ignore
     @Override
     public String getSubDetail() {
         return street+", "+city+", "+province+" "+postalCode;
     }
-
+    @Ignore
     @Override
     public int getObjType() {
         return 2;

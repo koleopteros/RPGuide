@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import ja.project.comp3074.rpguide.fragmentDash.AboutFragment;
 import ja.project.comp3074.rpguide.fragmentDash.CharacterFragment;
@@ -16,10 +17,13 @@ public class DashboardActivity extends AppCompatActivity {
     private final String TAG = "DashboardActivity";
     public static FragmentManager fragman;
     Button toShops, toCharacters, toAbout;
+    TextView title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        title = (TextView) findViewById(R.id.tvTitle);
 
         toShops = (Button) findViewById(R.id.btnToShops);
         toCharacters = (Button) findViewById(R.id.btnToCharacters);
@@ -46,6 +50,7 @@ public class DashboardActivity extends AppCompatActivity {
                 ShopsFragment shopFrag = new ShopsFragment();
                 FragmentTransaction fragTrans = fragman.beginTransaction();
                 fragTrans.add(R.id.dashFrame, shopFrag,null);
+                title.setText("Shops List");
                 fragTrans.commit();
             }
         });
@@ -55,6 +60,7 @@ public class DashboardActivity extends AppCompatActivity {
                 CharacterFragment charFrag= new CharacterFragment();
                 FragmentTransaction fragTrans = fragman.beginTransaction();
                 fragTrans.add(R.id.dashFrame, charFrag,null);
+                title.setText("Characters List");
                 fragTrans.commit();
             }
         });
@@ -64,6 +70,7 @@ public class DashboardActivity extends AppCompatActivity {
                 AboutFragment abootFrag = new AboutFragment();
                 FragmentTransaction fragTrans = fragman.beginTransaction();
                 fragTrans.add(R.id.dashFrame, abootFrag,null);
+                title.setText("About Page");
                 fragTrans.commit();
             }
         });

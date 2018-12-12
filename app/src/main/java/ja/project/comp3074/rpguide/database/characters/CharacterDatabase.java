@@ -11,7 +11,7 @@ import android.support.annotation.NonNull;
 
 import ja.project.comp3074.rpguide.obj.characters.Characters;
 
-@Database(entities=(Characters.class), version =1)
+@Database(entities=Characters.class, version =1)
 public abstract class CharacterDatabase extends RoomDatabase{
     public abstract CharacterDao characterDao();
     private static volatile CharacterDatabase instance;
