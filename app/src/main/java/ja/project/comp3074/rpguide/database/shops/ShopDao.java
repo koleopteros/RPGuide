@@ -10,7 +10,6 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import ja.project.comp3074.rpguide.obj.ListInterface;
 import ja.project.comp3074.rpguide.obj.shops.Shops;
 
 @Dao

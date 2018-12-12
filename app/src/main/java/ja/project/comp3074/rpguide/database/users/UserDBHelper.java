@@ -19,11 +19,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(UserContract.SQL_CREATE_USERS);
-        addNewUser(db, new User("Mr","Admin","admin@admin.com","admin"));
-        addNewUser(db, new User("Bob","Ross","bob@ross.com","bobross"));
-        addNewUser(db, new User("Aphrodite","Silva","afro@silvas.com","afro"));
         addNewUser(db, new User("General","Kenobi","coolguy@jedi.temple","order66"));
-        addNewUser(db, new User("Elson","Elmo","heal@for.days","elron"));
         addNewUser(db, new User("Charlie","Brown","peanut@gallery.org","peanuts"));
         addNewUser(db, new User("Dennis","D'menace","den@men.io","wrecker"));
         addNewUser(db, new User("Lazy","Login","1","1"));

@@ -14,7 +14,7 @@ public class UserContract{
         public static final String COL_TYPE_TEXT = "TEXT";
     }
     public static final String SQL_CREATE_USERS =
-            "create table " +UserEntry.TABLE_NAME +"("+
+            "create table " +UserEntry.TABLE_NAME +" ( "+
                     UserEntry._ID +" integer primary key, "+
                     UserEntry.COL_NAME_FNAME +" "+ UserEntry.COL_TYPE_TEXT+", "+
                     UserEntry.COL_NAME_LNAME +" "+UserEntry.COL_TYPE_TEXT+", "+

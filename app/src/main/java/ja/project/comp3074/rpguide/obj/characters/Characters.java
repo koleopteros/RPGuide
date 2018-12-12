@@ -5,8 +5,6 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-import ja.project.comp3074.rpguide.obj.ListInterface;
-
 @Entity(tableName="characters")
 public class Characters {
     @PrimaryKey
@@ -88,10 +86,6 @@ public class Characters {
     @Ignore
     public String getSubDetail() {
         return race+", "+job+", Ratings: "+rating+" out of "+ratingCount+" votes!";
-    }
-    @Ignore
-    public int getObjType() {
-        return 1;
     }
 
     @Ignore

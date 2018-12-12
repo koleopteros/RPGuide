@@ -1,6 +1,5 @@
 package ja.project.comp3074.rpguide.database.characters;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,9 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import ja.project.comp3074.rpguide.DashboardActivity;
 import ja.project.comp3074.rpguide.R;
-import ja.project.comp3074.rpguide.fragmentDash.CharacterFragment;
 import ja.project.comp3074.rpguide.obj.characters.Characters;
 
 public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.CharacterHolder> {

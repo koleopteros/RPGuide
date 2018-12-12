@@ -1,13 +1,9 @@
 package ja.project.comp3074.rpguide.obj.users;
 
-import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-import ja.project.comp3074.rpguide.obj.ListInterface;
-
-public class User implements ListInterface{
+public class User {
 
     private long id;
     private String firstName;
@@ -71,19 +67,12 @@ public class User implements ListInterface{
     }
 
     @Ignore
-    @Override
     public String getName() {
         return firstName+" "+lastName;
     }
 
     @Ignore
-    @Override
     public String getSubDetail() {
         return "";
     }
-    @Ignore
-    @Override
-    public int getObjType() {
-        return 0;
-    }
-}
+   }

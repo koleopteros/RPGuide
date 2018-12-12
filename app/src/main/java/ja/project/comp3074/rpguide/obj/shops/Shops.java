@@ -5,97 +5,65 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-import java.util.Set;
-
-import ja.project.comp3074.rpguide.obj.ListInterface;
 
 @Entity(tableName = "shops")
-public class Shops implements ListInterface{
-    @PrimaryKey
-    @NonNull
+public class Shops {
+    @PrimaryKey(autoGenerate = true)
+    private long id;
     private String name;
-    private String street;
-    private String city;
-    private String province;
-    private String postalCode;
+    private String address;
     private String phoneNumber;
-    private String email;
-    private String comment;
-    private Set<String> tags;
+    private String tags;
 
-    public Shops(String name, String street, String city, String province, String postalCode, String phoneNumber, String email, String comment, Set<String> tags) {
+    public Shops(String name, String address, String phoneNumber, String tags) {
         this.name = name;
-        this.street = street;
-        this.city = city;
-        this.province = province;
-        this.postalCode = postalCode;
+        this.address = address;
         this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.comment = comment;
         this.tags = tags;
     }
 
-    @Override
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public Set<String> getTags() {
-        return tags;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getAddress() {
+        return address;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public void setTags(Set<String> tags) {
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
         this.tags = tags;
     }
 
     @Ignore
-    @Override
     public String getSubDetail() {
-        return street+", "+city+", "+province+" "+postalCode;
-    }
-    @Ignore
-    @Override
-    public int getObjType() {
-        return 2;
+        return address+", "+phoneNumber;
     }
 }
