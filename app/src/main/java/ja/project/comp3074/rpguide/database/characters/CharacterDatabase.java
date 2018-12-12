@@ -36,8 +36,8 @@ public abstract class CharacterDatabase extends RoomDatabase{
         }
         @Override
         protected Void doInBackground(Void... voids) {
-            dao.insert(new Characters("Bob Dylan","Human","Dog Trainer","Loves dogs, hates cats."));
-            dao.insert(new Characters("Iseria Arisphodel","Elf","Ranger","Known as the Knight of White Flowers, she has a calm and solemn personality."));
+            dao.insert(new Characters("Bob Dylan","Human","Dog Trainer","Loves dogs, hates cats.",0,0));
+            dao.insert(new Characters("Iseria Arisphodel","Elf","Ranger","Known as the Knight of White Flowers, she has a calm and solemn personality.",0,0));
             return null;
         }
     }

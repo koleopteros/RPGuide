@@ -30,6 +30,8 @@ import ja.project.comp3074.rpguide.database.characters.Characters;
 import ja.project.comp3074.rpguide.utils.EmailHandler;
 
 import static android.app.Activity.RESULT_OK;
+import static ja.project.comp3074.rpguide.AddEditCharacterActivity.EXTRA_RATE;
+import static ja.project.comp3074.rpguide.AddEditCharacterActivity.EXTRA_RCNT;
 
 public class CharacterFragment extends Fragment {
     public static final int ADD_CHARACTER_REQUEST = 1;
@@ -64,7 +66,7 @@ public class CharacterFragment extends Fragment {
             @Override
             public void onChanged(@Nullable List<Characters> characters) {
                 adapter.setCharacters(characters);
-                Toast.makeText(getActivity(), "List size: " + characters.size(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "List size: " + characters.size(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -89,8 +91,9 @@ public class CharacterFragment extends Fragment {
                 intent.putExtra(AddEditCharacterActivity.EXTRA_RACE, c.getRace());
                 intent.putExtra(AddEditCharacterActivity.EXTRA_JOB, c.getJob());
                 intent.putExtra(AddEditCharacterActivity.EXTRA_DESC,c.getDesc());
-                intent.putExtra(AddEditCharacterActivity.EXTRA_RATE,c.getRating());
+                intent.putExtra(EXTRA_RATE,c.getRating());
                 intent.putExtra(AddEditCharacterActivity.EXTRA_RCNT,c.getRatingCount());
+                // cvm.update(c);
                 startActivityForResult(intent,EDIT_CHARACTER_REQUEST);
             }
         });
@@ -119,18 +122,14 @@ public class CharacterFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CharacterFragment.ADD_CHARACTER_REQUEST && resultCode == RESULT_OK) {
-            Toast.makeText(getActivity(), "Character is being created...", Toast.LENGTH_SHORT);
             String name = data.getStringExtra(AddEditCharacterActivity.EXTRA_NAME);
             String race = data.getStringExtra(AddEditCharacterActivity.EXTRA_RACE);
             String job = data.getStringExtra(AddEditCharacterActivity.EXTRA_JOB);
             String desc = data.getStringExtra(AddEditCharacterActivity.EXTRA_DESC);
-            int rate = data.getIntExtra(AddEditCharacterActivity.EXTRA_RATE,0);
+            int rate = data.getIntExtra(EXTRA_RATE,0);
             int ratingCount = data.getIntExtra(AddEditCharacterActivity.EXTRA_RCNT,0);
 
-            Characters c = new Characters(name, race, job, desc);
-
-            c.setRating(rate);
-            c.setRatingCount(ratingCount);
+            Characters c = new Characters(name, race, job, desc,rate,ratingCount);
 
             cvm.insert(c);
 
@@ -144,11 +143,10 @@ public class CharacterFragment extends Fragment {
             String race = data.getStringExtra(AddEditCharacterActivity.EXTRA_RACE);
             String job = data.getStringExtra(AddEditCharacterActivity.EXTRA_JOB);
             String desc = data.getStringExtra(AddEditCharacterActivity.EXTRA_DESC);
-            int rate = data.getIntExtra(AddEditCharacterActivity.EXTRA_RATE,0);
+            int rate = data.getIntExtra(EXTRA_RATE,0);
             int ratingCount = data.getIntExtra(AddEditCharacterActivity.EXTRA_RCNT,0);
-            Characters c = new Characters(name, race, job, desc);
-            c.setRating(rate);
-            c.setRatingCount(ratingCount);
+            Characters c = new Characters(name, race, job, desc, rate, ratingCount);
+            Toast.makeText(getActivity(),c.getRating()+"",Toast.LENGTH_LONG).show();
 
             cvm.update(c);
 

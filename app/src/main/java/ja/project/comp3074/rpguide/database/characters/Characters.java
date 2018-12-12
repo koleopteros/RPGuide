@@ -21,18 +21,8 @@ public class Characters {
         this.name = name;
         this.race = race;
         this.job = job;
-        rating =rating;
-        ratingCount=ratingCount;
-        this.desc = desc;
-    }
-    //Constructor for non-DB source
-    @Ignore
-    public Characters(@NonNull String name, String race, String job, String desc) {
-        this.race = race;
-        this.job = job;
-        this.name = name;
-        rating =0;
-        ratingCount=0;
+        this.rating =rating;
+        this.ratingCount=ratingCount;
         this.desc = desc;
     }
     public String getName() {

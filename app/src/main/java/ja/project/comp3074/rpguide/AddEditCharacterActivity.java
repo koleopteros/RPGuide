@@ -66,7 +66,6 @@ public class AddEditCharacterActivity extends AppCompatActivity {
             etValues.get(3).setText(intent.getStringExtra(EXTRA_DESC));
             rate = intent.getIntExtra(EXTRA_RATE,0);
             ratingCount = intent.getIntExtra(EXTRA_RCNT,0);
-
             btnAddNewChar.setText(getString(R.string.editCharacterButton));
         }
     }

@@ -1,6 +1,5 @@
 package ja.project.comp3074.rpguide;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import ja.project.comp3074.rpguide.database.characters.CharacterViewModel;
 import ja.project.comp3074.rpguide.fragmentDash.AboutFragment;
 import ja.project.comp3074.rpguide.fragmentDash.CharacterFragment;
 import ja.project.comp3074.rpguide.fragmentDash.ShopsFragment;
@@ -24,11 +22,9 @@ public class DashboardActivity extends AppCompatActivity {
     Button toShops, toCharacters, toAbout;
     TextView title;
     Fragment frag;
-    private CharacterViewModel cvm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        cvm = ViewModelProviders.of(this).get(CharacterViewModel.class);
 
         setContentView(R.layout.activity_dashboard);
 

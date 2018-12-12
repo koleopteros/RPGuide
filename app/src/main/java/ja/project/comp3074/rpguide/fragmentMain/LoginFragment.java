@@ -52,13 +52,9 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                if(authenticate(userAttempt,passwdAttempt)){
                     Intent intent = new Intent(getActivity(), DashboardActivity.class);
                     startActivity(intent);
-                }
-                else{
-                    Toast.makeText(getActivity(),"Login Failed!\nIncorrect username or password.",Toast.LENGTH_SHORT).show();
-                }
+
             }
         });
 
