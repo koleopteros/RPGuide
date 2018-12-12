@@ -5,16 +5,16 @@ import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
 import java.util.List;
-import ja.project.comp3074.rpguide.obj.shops.Shops;
 
 public class ShopRepository {
     private ShopDao sdao;
-    private LiveData<List<Shops>> allShops;
-
-    ShopRepository(Application app){
+    private LiveData<List<Shops>> liveData;
+    private List<Shops> data;
+    public ShopRepository(Application app){
         ShopDatabase db = ShopDatabase.getInstance(app);
         sdao = db.shopDao();
-        allShops = sdao.getAllShops();
+        liveData = sdao.getLiveShops();
+        data = sdao.getAllShops();
     }
     public void insert(Shops shop){
         new InsertAsyncTask(sdao).execute(shop);
@@ -22,9 +22,10 @@ public class ShopRepository {
     public void update(Shops shop){ new UpdateAsyncTask(sdao).execute(shop);}
     public void delete(Shops shop){ new DeleteAsyncTask(sdao).execute(shop);}
 
-    public LiveData<List<Shops>> getAllShops(){
-        return allShops;
+    public LiveData<List<Shops>> getLiveData(){
+        return liveData;
     }
+    public List<Shops> getData(){ return data; }
 
     private static class InsertAsyncTask extends AsyncTask<Shops,Void,Void>{
         private ShopDao dao;

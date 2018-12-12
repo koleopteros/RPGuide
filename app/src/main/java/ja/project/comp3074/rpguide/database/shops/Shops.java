@@ -1,4 +1,4 @@
-package ja.project.comp3074.rpguide.obj.shops;
+package ja.project.comp3074.rpguide.database.shops;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;

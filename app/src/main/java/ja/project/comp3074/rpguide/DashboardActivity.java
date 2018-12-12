@@ -11,13 +11,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import ja.project.comp3074.rpguide.database.characters.CharacterViewModel;
 import ja.project.comp3074.rpguide.fragmentDash.AboutFragment;
 import ja.project.comp3074.rpguide.fragmentDash.CharacterFragment;
 import ja.project.comp3074.rpguide.fragmentDash.ShopsFragment;
-import ja.project.comp3074.rpguide.obj.characters.Characters;
 
 
 public class DashboardActivity extends AppCompatActivity {

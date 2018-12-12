@@ -6,8 +6,6 @@ import android.os.AsyncTask;
 
 import java.util.List;
 
-import ja.project.comp3074.rpguide.obj.characters.Characters;
-
 public class CharacterRepository {
     private CharacterDao cDao;
     private LiveData<List<Characters>> allCharacters;

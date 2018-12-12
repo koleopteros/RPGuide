@@ -1,4 +1,4 @@
-package ja.project.comp3074.rpguide.obj.users;
+package ja.project.comp3074.rpguide.database.users;
 
 import android.arch.persistence.room.Ignore;
 import android.support.annotation.NonNull;

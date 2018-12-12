@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ja.project.comp3074.rpguide.R;
-import ja.project.comp3074.rpguide.obj.characters.Characters;
 
 public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.CharacterHolder> {
     private List<Characters> characters = new ArrayList<>();
@@ -37,6 +36,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
             public void onClick(View v) {
                 characters.get(i).upvote();
                 holder.textDesc.setText(currentCharacter.getSubDetail());
+                notifyDataSetChanged();
             }
         });
         holder.btnTwo.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +44,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
             public void onClick(View v) {
                 characters.get(i).downvote();
                 holder.textDesc.setText(currentCharacter.getSubDetail());
+                notifyDataSetChanged();
             }
         });
     }

@@ -17,7 +17,7 @@ import ja.project.comp3074.rpguide.DashboardActivity;
 import ja.project.comp3074.rpguide.MainActivity;
 import ja.project.comp3074.rpguide.R;
 import ja.project.comp3074.rpguide.database.users.UserDBHelper;
-import ja.project.comp3074.rpguide.obj.users.User;
+import ja.project.comp3074.rpguide.database.users.User;
 
 public class RegistrationFragment extends Fragment {
     TextView reg_fname,reg_lname,reg_email,reg_passwd;

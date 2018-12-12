@@ -2,13 +2,10 @@ package ja.project.comp3074.rpguide.fragmentDash;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -29,7 +26,7 @@ import ja.project.comp3074.rpguide.EmailActivity;
 import ja.project.comp3074.rpguide.R;
 import ja.project.comp3074.rpguide.database.characters.CharacterAdapter;
 import ja.project.comp3074.rpguide.database.characters.CharacterViewModel;
-import ja.project.comp3074.rpguide.obj.characters.Characters;
+import ja.project.comp3074.rpguide.database.characters.Characters;
 import ja.project.comp3074.rpguide.utils.EmailHandler;
 
 import static android.app.Activity.RESULT_OK;

@@ -9,8 +9,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-import ja.project.comp3074.rpguide.obj.characters.Characters;
-
 @Database(entities={Characters.class}, version =2)
 public abstract class CharacterDatabase extends RoomDatabase{
     public abstract CharacterDao characterDao();

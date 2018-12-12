@@ -1,23 +1,15 @@
 package ja.project.comp3074.rpguide;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.support.v7.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
-import ja.project.comp3074.rpguide.database.characters.CharacterViewModel;
-import ja.project.comp3074.rpguide.obj.characters.Characters;
 
 public class AddEditCharacterActivity extends AppCompatActivity {
     public static final String EXTRA_NAME="name";
@@ -64,16 +56,18 @@ public class AddEditCharacterActivity extends AppCompatActivity {
         });
         Intent intent = getIntent();
         if(intent.hasExtra(EXTRA_NAME)){
+            TextView title = findViewById(R.id.tvNewCharTitle);
             etValues.get(0).setText(intent.getStringExtra(EXTRA_NAME));
             etValues.get(0).setEnabled(false);
             etValues.get(0).setFocusable(false);
+            title.setText(getString(R.string.editCharacterTitle));
             etValues.get(1).setText(intent.getStringExtra(EXTRA_RACE));
             etValues.get(2).setText(intent.getStringExtra(EXTRA_JOB));
             etValues.get(3).setText(intent.getStringExtra(EXTRA_DESC));
             rate = intent.getIntExtra(EXTRA_RATE,0);
             ratingCount = intent.getIntExtra(EXTRA_RCNT,0);
 
-            btnAddNewChar.setText("Edit!");
+            btnAddNewChar.setText(getString(R.string.editCharacterButton));
         }
     }
     public void goBack(){
@@ -91,7 +85,6 @@ public class AddEditCharacterActivity extends AppCompatActivity {
             Toast.makeText(this, "You need at least a NAME, RACE, and JOB!",Toast.LENGTH_SHORT).show();
             return;
         }
-
         data.putExtra(EXTRA_NAME,name);
         data.putExtra(EXTRA_RACE,race);
         data.putExtra(EXTRA_JOB,job);

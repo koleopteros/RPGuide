@@ -7,4 +7,6 @@
 
     <string name="tab">\u0009</string>
     <string name="title_activity_maps">Map</string>
+    <string name="editCharacterTitle">Edit Character</string>
+    <string name="editCharacterButton">Edit!</string>
 </resources>

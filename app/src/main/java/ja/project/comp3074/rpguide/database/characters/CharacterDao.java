@@ -10,8 +10,6 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import ja.project.comp3074.rpguide.obj.characters.Characters;
-
 @Dao
 public interface CharacterDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

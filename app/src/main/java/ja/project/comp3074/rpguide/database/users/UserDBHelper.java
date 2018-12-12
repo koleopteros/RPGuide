@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import ja.project.comp3074.rpguide.obj.users.User;
-
 public class UserDBHelper extends SQLiteOpenHelper {
     public static final int DB_VERSION = 1;
     public static final String DB_NAME = "users.db";

@@ -8,8 +8,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-import ja.project.comp3074.rpguide.obj.shops.Shops;
-
 @Database(entities = {Shops.class}, version=1)
 public abstract class ShopDatabase extends RoomDatabase{
     private static volatile ShopDatabase instance;

@@ -1,10 +1,8 @@
 package ja.project.comp3074.rpguide.fragmentMain;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,14 +13,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import ja.project.comp3074.rpguide.DashboardActivity;
 import ja.project.comp3074.rpguide.MainActivity;
 import ja.project.comp3074.rpguide.R;
 import ja.project.comp3074.rpguide.database.users.UserDBHelper;
-import ja.project.comp3074.rpguide.obj.users.User;
+import ja.project.comp3074.rpguide.database.users.User;
 
 public class LoginFragment extends Fragment {
     private TextView txtUser, txtPasswd;
