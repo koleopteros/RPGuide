@@ -71,8 +71,8 @@ public class LoginFragment extends Fragment {
     }
     private boolean authenticate(String username, String passwd){
         UserDBHelper dbHelper = new UserDBHelper(getActivity());
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        User user = dbHelper.authenticate(db, username,passwd);
+
+        User user = dbHelper.authenticate(username,passwd);
         if(user==null){
             return false;
         }

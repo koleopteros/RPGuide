@@ -30,7 +30,7 @@ public class ShopRepository {
 
         @Override
         protected Void doInBackground(Shops... shops) {
-            dao.insertShop(shops[0]);
+            dao.insert(shops[0]);
             return null;
         }
     }

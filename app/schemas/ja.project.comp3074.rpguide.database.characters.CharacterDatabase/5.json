@@ -1,18 +1,24 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 1,
-    "identityHash": "62715450192f3e6c77a08f75d216305b",
+    "version": 5,
+    "identityHash": "3c9471afcb9976ca6d1bd7d69fe93d72",
     "entities": [
       {
         "tableName": "characters",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL, `race` TEXT, `job` TEXT, `desc` TEXT, `rating` INTEGER NOT NULL, `ratingCount` INTEGER NOT NULL, PRIMARY KEY(`name`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `race` TEXT, `job` TEXT, `desc` TEXT, `rating` INTEGER NOT NULL, `ratingCount` INTEGER NOT NULL)",
         "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
           {
             "fieldPath": "name",
             "columnName": "name",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "race",
@@ -47,9 +53,9 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "name"
+            "id"
           ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
         "indices": [],
         "foreignKeys": []
@@ -57,7 +63,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"62715450192f3e6c77a08f75d216305b\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"3c9471afcb9976ca6d1bd7d69fe93d72\")"
     ]
   }
 }

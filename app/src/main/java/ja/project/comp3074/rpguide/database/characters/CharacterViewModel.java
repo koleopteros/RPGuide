@@ -27,4 +27,6 @@ public class CharacterViewModel extends AndroidViewModel {
     public void insert(Characters c){
         cRepo.insert(c);
     }
+    public void update(Characters c){cRepo.update(c);}
+    public void delete(Characters c) { cRepo.delete(c);}
 }

@@ -6,16 +6,14 @@ import android.os.AsyncTask;
 
 import java.util.List;
 
-import ja.project.comp3074.rpguide.obj.ListInterface;
 import ja.project.comp3074.rpguide.obj.characters.Characters;
 
 public class CharacterRepository {
     private CharacterDao cDao;
     private LiveData<List<Characters>> allCharacters;
-    private LiveData<List<Characters>> selectedCharacters;
 
-    CharacterRepository(Application app){
-        CharacterDatabase db = CharacterDatabase.getDatabase(app);
+    public CharacterRepository(Application app){
+        CharacterDatabase db = CharacterDatabase.getInstance(app);
         cDao = db.characterDao();
         allCharacters = cDao.getAllCharacters();
     }
@@ -25,19 +23,47 @@ public class CharacterRepository {
     }
 
     public void insert(Characters c){
-        new insertAsyncTask(cDao).execute(c);
+        new InsertAsyncTask(cDao).execute(c);
+    }
+    public void update(Characters c){
+        new UpdateAsyncTask(cDao).execute(c);
+    }
+    public void delete(Characters c){
+        new DeleteAsyncTask(cDao).execute(c);
     }
 
-    private static class insertAsyncTask extends AsyncTask<Characters,Void,Void>{
+    private static class InsertAsyncTask extends AsyncTask<Characters,Void,Void>{
         private CharacterDao dao;
 
-        insertAsyncTask(CharacterDao cDao){
+        InsertAsyncTask(CharacterDao cDao){
             dao = cDao;
         }
 
         @Override
         protected Void doInBackground(Characters... param) {
-            dao.insertCharacter(param[0]);
+            dao.insert(param[0]);
+            return null;
+        }
+    }
+    private static class UpdateAsyncTask extends AsyncTask<Characters,Void,Void>{
+        private CharacterDao dao;
+
+        UpdateAsyncTask(CharacterDao cdao){ dao = cdao; }
+
+        @Override
+        protected Void doInBackground(Characters... characters) {
+            dao.update(characters[0]);
+            return null;
+        }
+    }
+    private static class DeleteAsyncTask extends AsyncTask<Characters,Void,Void>{
+        private CharacterDao dao;
+
+        DeleteAsyncTask(CharacterDao cdao){ dao = cdao; }
+
+        @Override
+        protected Void doInBackground(Characters... characters) {
+            dao.delete(characters[0]);
             return null;
         }
     }

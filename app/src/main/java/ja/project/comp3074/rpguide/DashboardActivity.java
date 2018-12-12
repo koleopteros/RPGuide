@@ -1,5 +1,9 @@
 package ja.project.comp3074.rpguide;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -7,10 +11,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import ja.project.comp3074.rpguide.database.characters.CharacterViewModel;
 import ja.project.comp3074.rpguide.fragmentDash.AboutFragment;
 import ja.project.comp3074.rpguide.fragmentDash.CharacterFragment;
 import ja.project.comp3074.rpguide.fragmentDash.ShopsFragment;
+import ja.project.comp3074.rpguide.obj.characters.Characters;
 
 
 public class DashboardActivity extends AppCompatActivity {
@@ -18,9 +25,13 @@ public class DashboardActivity extends AppCompatActivity {
     public static FragmentManager fragman;
     Button toShops, toCharacters, toAbout;
     TextView title;
+    Fragment frag;
+    private CharacterViewModel cvm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        cvm = ViewModelProviders.of(this).get(CharacterViewModel.class);
+
         setContentView(R.layout.activity_dashboard);
 
         title = (TextView) findViewById(R.id.tvTitle);
@@ -36,9 +47,9 @@ public class DashboardActivity extends AppCompatActivity {
 
         if(findViewById(R.id.dashFrame)!=null){
             if(savedInstanceState!=null) return;
-            CharacterFragment charFrag= new CharacterFragment();
+            frag= new CharacterFragment();
             FragmentTransaction fragTrans = fragman.beginTransaction();
-            fragTrans.add(R.id.dashFrame, charFrag,null);
+            fragTrans.add(R.id.dashFrame, frag,null);
             fragTrans.commit();
         }
     }
@@ -47,9 +58,9 @@ public class DashboardActivity extends AppCompatActivity {
         toShops.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShopsFragment shopFrag = new ShopsFragment();
+                frag = new ShopsFragment();
                 FragmentTransaction fragTrans = fragman.beginTransaction();
-                fragTrans.add(R.id.dashFrame, shopFrag,null);
+                fragTrans.replace(R.id.dashFrame, frag,"shop");
                 title.setText("Shops List");
                 fragTrans.commit();
             }
@@ -57,9 +68,9 @@ public class DashboardActivity extends AppCompatActivity {
         toCharacters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CharacterFragment charFrag= new CharacterFragment();
+                frag= new CharacterFragment();
                 FragmentTransaction fragTrans = fragman.beginTransaction();
-                fragTrans.add(R.id.dashFrame, charFrag,null);
+                fragTrans.replace(R.id.dashFrame, frag,"character");
                 title.setText("Characters List");
                 fragTrans.commit();
             }
@@ -67,12 +78,28 @@ public class DashboardActivity extends AppCompatActivity {
         toAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AboutFragment abootFrag = new AboutFragment();
+                frag = new AboutFragment();
                 FragmentTransaction fragTrans = fragman.beginTransaction();
-                fragTrans.add(R.id.dashFrame, abootFrag,null);
+                fragTrans.replace(R.id.dashFrame, frag,"about");
                 title.setText("About Page");
                 fragTrans.commit();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Fragment frag = fragman.findFragmentById(R.id.dashFrame);
+        if(frag!=null){
+            FragmentTransaction fragTrans = fragman.beginTransaction();
+            frag = new CharacterFragment();
+            fragTrans.replace(R.id.dashFrame,frag,null);
+            fragTrans.commit();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

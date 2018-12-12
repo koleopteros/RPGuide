@@ -43,16 +43,16 @@ public class UserDBHelper extends SQLiteOpenHelper {
 
         return db.insert(UserContract.UserEntry.TABLE_NAME,null,values);
     }
-    public User authenticate(SQLiteDatabase db,String email, String password){
+    public User authenticate(String email, String password){
+        SQLiteDatabase db = this.getReadableDatabase();
         String[] projection = {
                 UserContract.UserEntry._ID,
                 UserContract.UserEntry.COL_NAME_FNAME,
                 UserContract.UserEntry.COL_NAME_LNAME,
-                UserContract.UserEntry.COL_NAME_EMAIL,
-                UserContract.UserEntry.COL_NAME_PASSWD
+                UserContract.UserEntry.COL_NAME_EMAIL
         };
-        String selection = UserContract.UserEntry.COL_NAME_EMAIL+" = ? ";
-        String[] selectionArgs = {email};
+        String selection = UserContract.UserEntry.COL_NAME_EMAIL+" = ? and "+UserContract.UserEntry.COL_NAME_PASSWD+" = ? ";
+        String[] selectionArgs = {email,password};
 
         Cursor c = db.query(UserContract.UserEntry.TABLE_NAME, projection,
                 selection,
