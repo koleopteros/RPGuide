@@ -1,14 +1,6 @@
 package ja.project.comp3074.rpguide.database.shops;
 
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
-
-
-@Entity(tableName = "shops")
 public class Shops {
-    @PrimaryKey(autoGenerate = true)
     private long id;
     private String name;
     private String address;
@@ -62,7 +54,6 @@ public class Shops {
         this.tags = tags;
     }
 
-    @Ignore
     public String getSubDetail() {
         return address+", "+phoneNumber;
     }
